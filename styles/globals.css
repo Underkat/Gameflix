@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
+/* html,
 body {
   padding: 0;
   margin: 0;
@@ -19,6 +19,8 @@ a {
   box-sizing: border-box;
 }
 
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -26,5 +28,17 @@ a {
   body {
     color: white;
     background: black;
+  }
+} */
+@layer base {
+  body {
+    @apply bg-[#141414] text-white;
+  }
+}
+
+@layer components {
+  .headerLink {
+    @apply cursor-pointer text-sm font-light text-[#e5e5e5] transition duration-[.4s]
+    hover:text-[#cd3636];
   }
 }
