@@ -5,7 +5,14 @@ import Banner from "../components/Banner";
 import styles from "../styles/Home.module.css";
 import requests from "../utils/requests";
 
-export default function Home({ mmoRPG }) {
+export default function Home({
+  mmoRPG,
+  strategy,
+  moba,
+  survival,
+  racing,
+  popular,
+}) {
   return (
     <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
       <Head>
@@ -14,7 +21,7 @@ export default function Home({ mmoRPG }) {
       </Head>
       <Header />
       <main>
-        <Banner />
+        <Banner popular={popular}/>
         <section>
           {/* Rows */}
           {/* Rows */}
