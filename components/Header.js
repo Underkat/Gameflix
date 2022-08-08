@@ -1,9 +1,29 @@
-import {BellIcon, SearchIcon} from '@heroicons/react/solid'
-import Link from 'next/link';
+import { BellIcon, SearchIcon } from "@heroicons/react/solid";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
 
 const Header = () => {
+  const [isScrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header>
+    <header className={`${isScrolled && "bg-[#141414]"}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
           src="https://rb.gy/ulxxee"
@@ -21,12 +41,16 @@ const Header = () => {
         </ul>
       </div>
 
-      <div className='flex items-center space-x-4 text-sm font-light'>
-        <SearchIcon className='hidden h-6 w-6 sm:inline'/>
-        <p className='hidden lg:inline'>something</p>
-        <BellIcon className='h-6 w-6 '/>
+      <div className="flex items-center space-x-4 text-sm font-light">
+        <SearchIcon className="hidden h-6 w-6 sm:inline" />
+        <p className="hidden lg:inline">something</p>
+        <BellIcon className="h-6 w-6 " />
         <Link href="/account">
-            <img src="http://rb.gy/g1pwyx" alt="" className='cursor-pointer rounded'/>
+          <img
+            src="http://rb.gy/g1pwyx"
+            alt=""
+            className="cursor-pointer rounded"
+          />
         </Link>
       </div>
     </header>
@@ -34,3 +58,5 @@ const Header = () => {
 };
 
 export default Header;
+
+
