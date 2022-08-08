@@ -1,3 +1,6 @@
+import {BellIcon, SearchIcon} from '@heroicons/react/solid'
+import Link from 'next/link';
+
 const Header = () => {
   return (
     <header>
@@ -17,7 +20,15 @@ const Header = () => {
           <li className="headerLink">Strategy</li>
         </ul>
       </div>
-      <div></div>
+
+      <div className='flex items-center space-x-4 text-sm font-light'>
+        <SearchIcon className='hidden h-6 w-6 sm:inline'/>
+        <p className='hidden lg:inline'>something</p>
+        <BellIcon className='h-6 w-6 '/>
+        <Link href="/account">
+            <img src="http://rb.gy/g1pwyx" alt="" className='cursor-pointer rounded'/>
+        </Link>
+      </div>
     </header>
   );
 };
