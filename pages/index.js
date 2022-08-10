@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Banner from "../components/Banner";
 import styles from "../styles/Home.module.css";
 import requests from "../utils/requests";
+import Row from "../components/Row";
 
 export default function Home({
   mmoRPG,
@@ -12,6 +13,7 @@ export default function Home({
   survival,
   racing,
   popular,
+  shooter,
 }) {
   return (
     <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
@@ -23,12 +25,13 @@ export default function Home({
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
         <Banner popular={popular} />
         <section>
-          {/* Rows */}
-          {/* Rows */}
-          {/* Rows */}
-          {/* Rows */}
-          {/* Rows */}
-          {/* Rows */}
+          <Row title="Popular" games={popular} />
+          <Row title="Shooter" games={shooter} />
+          <Row title="MMORPG" games={mmoRPG} />
+          <Row title="Strategy" games={strategy} />
+          <Row title="MOBA" games={moba} />
+          <Row title="Survival" games={survival} />
+          <Row title="Racing" games={racing} />
         </section>
       </main>
       {/* Modal */}
@@ -39,7 +42,7 @@ export default function Home({
 // export const getServerSideProps = async () =>
 
 export async function getServerSideProps() {
-  const [mmoRPG, strategy, moba, racing, survival, popular] = await Promise.all(
+  const [mmoRPG, strategy, moba, racing, survival, popular, shooter] = await Promise.all(
     [
       fetch(requests.fetchMMOrpg).then((res) => res.json()),
       fetch(requests.fetchStrategy).then((res) => res.json()),
@@ -47,6 +50,8 @@ export async function getServerSideProps() {
       fetch(requests.fetchRacing).then((res) => res.json()),
       fetch(requests.fetchSurvival).then((res) => res.json()),
       fetch(requests.fetchPopular).then((res) => res.json()),
+      fetch(requests.fetchShooter).then((res) => res.json()),
+
     ]
   );
 
@@ -58,6 +63,7 @@ export async function getServerSideProps() {
       survival,
       racing,
       popular,
+      shooter,
     },
   };
 }
