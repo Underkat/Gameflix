@@ -20,8 +20,8 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main>
-        <Banner popular={popular}/>
+      <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
+        <Banner popular={popular} />
         <section>
           {/* Rows */}
           {/* Rows */}
